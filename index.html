@@ -29,7 +29,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Ambient background ── */
 body::before {
   content: '';
   position: fixed;
@@ -44,7 +43,6 @@ body::before {
 
 .container { max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(6,6,14,.88);
@@ -67,7 +65,6 @@ nav {
 }
 .nav-links a:hover { color: var(--tx); }
 
-/* ── HERO ── */
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column;
@@ -118,7 +115,6 @@ nav {
 }
 .hero-desc em { color: var(--g2); font-style: normal; }
 
-/* ── APPS SECTION ── */
 .section { padding: 80px 0; }
 .section-label {
   font-family: 'Audiowide', sans-serif;
@@ -135,68 +131,52 @@ nav {
   margin-bottom: 40px;
 }
 
-.app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-
-.app-card {
+.app-hero {
   background: var(--card);
   border: 1px solid rgba(255,255,255,.06);
-  border-radius: 20px;
-  padding: 36px 28px;
+  border-radius: 24px;
+  padding: 48px 36px;
   position: relative;
   overflow: hidden;
-  transition: all .3s cubic-bezier(.16,1,.3,1);
+  text-align: center;
 }
-.app-card::before {
+.app-hero::before {
   content: '';
-  position: absolute; inset: 0; border-radius: 20px;
-  background: radial-gradient(ellipse at 50% 120%, var(--glow), transparent 65%);
-  opacity: 0; transition: opacity .3s;
+  position: absolute; inset: 0; border-radius: 24px;
+  background: radial-gradient(ellipse at 50% 120%, rgba(78,205,196,.15), transparent 65%);
 }
-.app-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255,255,255,.12);
-  box-shadow: 0 12px 40px rgba(0,0,0,.4), 0 0 50px var(--glow);
-}
-.app-card:hover::before { opacity: .6; }
-
-.app-icon { font-size: 3rem; margin-bottom: 16px; position: relative; z-index: 1; }
-.app-name {
+.app-hero-icon { font-size: 4rem; margin-bottom: 16px; position: relative; z-index: 1; }
+.app-hero-name {
   font-family: 'Audiowide', sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 2px;
+  font-size: 2rem;
+  letter-spacing: 3px;
   position: relative; z-index: 1;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #fff 20%, var(--g2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.app-tagline {
-  font-size: .85rem; color: var(--mu);
+.app-hero-tagline {
+  font-size: 1rem; color: var(--mu);
   position: relative; z-index: 1;
-  margin-bottom: 20px; line-height: 1.6;
+  max-width: 500px; margin: 0 auto 24px; line-height: 1.7;
 }
-.app-badge {
+.app-hero-badge {
   display: inline-block;
   font-family: 'Audiowide', sans-serif;
-  font-size: .55rem;
+  font-size: .6rem;
   letter-spacing: 2px;
-  padding: 6px 14px;
-  border-radius: 6px;
+  padding: 8px 18px;
+  border-radius: 8px;
   text-decoration: none;
   position: relative; z-index: 1;
-  transition: all .2s;
-}
-.badge-live {
   background: rgba(78,205,196,.15);
   border: 1px solid rgba(78,205,196,.4);
   color: var(--g2);
+  transition: all .2s;
 }
-.badge-live:hover { background: rgba(78,205,196,.25); }
-.badge-soon {
-  background: rgba(255,230,109,.1);
-  border: 1px solid rgba(255,230,109,.3);
-  color: var(--g3);
-}
+.app-hero-badge:hover { background: rgba(78,205,196,.25); }
 
-/* ── FEATURES ── */
-.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
 .feat {
   background: rgba(14,14,24,.7);
   border: 1px solid rgba(255,255,255,.04);
@@ -207,14 +187,23 @@ nav {
 .feat-icon { font-size: 2rem; margin-bottom: 10px; }
 .feat-name {
   font-family: 'Audiowide', sans-serif;
-  font-size: .75rem;
+  font-size: .72rem;
   letter-spacing: 2px;
   color: var(--tx);
   margin-bottom: 6px;
 }
 .feat-desc { font-size: .78rem; color: var(--mu); line-height: 1.6; }
 
-/* ── ABOUT ── */
+.feat-section-label {
+  font-family: 'Audiowide', sans-serif;
+  font-size: .55rem;
+  letter-spacing: 5px;
+  color: var(--g1);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  margin-top: 20px;
+}
+
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -239,7 +228,6 @@ nav {
 }
 .stat-label { font-size: .7rem; color: var(--mu); letter-spacing: 1px; margin-top: 4px; }
 
-/* ── FOOTER ── */
 footer {
   border-top: 1px solid rgba(255,255,255,.04);
   padding: 40px 0;
@@ -260,9 +248,8 @@ footer {
 .footer-links a:hover { color: var(--g2); }
 .footer-copy { font-size: .7rem; color: rgba(120,128,168,.5); }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 700px) {
-  .app-grid, .about-content { grid-template-columns: 1fr; }
+  .about-content { grid-template-columns: 1fr; }
   .feat-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { gap: 14px; }
   .nav-links a { font-size: .75rem; }
@@ -278,7 +265,7 @@ footer {
 <nav>
   <div class="nav-brand">KINETARA</div>
   <div class="nav-links">
-    <a href="#apps">Apps</a>
+    <a href="#app">App</a>
     <a href="#about">About</a>
     <a href="mailto:kinetarastudios@gmail.com">Contact</a>
     <a href="privacy-jugglecraft.html">Privacy</a>
@@ -291,67 +278,137 @@ footer {
   <div class="hero-orb orb3"></div>
   <div class="hero-title">KINETARA<br>STUDIOS</div>
   <div class="hero-sub">Interactive Apps & Games</div>
-  <p class="hero-desc">We turn <em>movement</em>, <em>rhythm</em>, and <em>pattern</em> into interactive experiences. Simulators, skill games, and training tools — crafted with care and free to use.</p>
+  <p class="hero-desc">We turn <em>movement</em>, <em>rhythm</em>, and <em>pattern</em> into interactive experiences. Simulators, skill games, and training tools — crafted with care.</p>
 </section>
 
-<section class="section" id="apps">
+<section class="section" id="app">
   <div class="container">
-    <div class="section-label">Our Apps</div>
-    <div class="section-title">What We're Building</div>
-    <div class="app-grid">
+    <div class="section-label">Our Flagship App</div>
+    <div class="section-title">JuggleCraft 3D</div>
 
-      <div class="app-card" style="--glow: rgba(255,107,53,.2);">
-        <div class="app-icon">🤹</div>
-        <div class="app-name" style="color: var(--g1);">JuggleCraft 3D</div>
-        <div class="app-tagline">Full 3D siteswap simulator with games, training tools, and a learning hub. Balls, clubs, rings, bounce, diabolo, and passing — all in one app.</div>
-        <a class="app-badge badge-soon" href="#">COMING SOON ON GOOGLE PLAY</a>
-      </div>
-
-      <div class="app-card" style="--glow: rgba(78,205,196,.2);">
-        <div class="app-icon">🎯</div>
-        <div class="app-name" style="color: var(--g2);">Pattern Drop</div>
-        <div class="app-tagline">Siteswap rhythm game. 132 levels. Tap the right hand at the right time. Three difficulty modes from chill to brutal.</div>
-        <a class="app-badge badge-live" href="https://play.google.com/store/apps/details?id=com.jugglesmith.patterndrop">GET IT ON GOOGLE PLAY</a>
-      </div>
-
+    <div class="app-hero">
+      <div class="app-hero-icon">🤹</div>
+      <div class="app-hero-name">JuggleCraft 3D</div>
+      <div class="app-hero-tagline">The most complete juggling app ever built. A full 3D siteswap simulator, 6 skill games, a choreography studio, structured training tools, and a comprehensive learning hub — all in one app.</div>
+      <a class="app-hero-badge" href="#">AVAILABLE ON GOOGLE PLAY — OPEN TESTING</a>
     </div>
   </div>
 </section>
 
 <section class="section" id="features">
   <div class="container">
-    <div class="section-label">JuggleCraft 3D</div>
+    <div class="section-label">Features</div>
     <div class="section-title">Everything in One App</div>
+
+    <div class="feat-section-label">3D Simulator</div>
     <div class="feat-grid">
       <div class="feat">
         <div class="feat-icon">🌐</div>
-        <div class="feat-name">3D Simulator</div>
-        <div class="feat-desc">Any siteswap pattern in real-time 3D. Orbit, zoom, and watch from any angle.</div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🎮</div>
-        <div class="feat-name">5+ Games</div>
-        <div class="feat-desc">Pattern ID, Echo Cascade, Flash Challenge, Ladder Puzzle, Pattern Drop.</div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🧠</div>
-        <div class="feat-name">Learn Hub</div>
-        <div class="feat-desc">Siteswap primer, trick library, pattern explorer, transitions, learning path.</div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">⏱️</div>
-        <div class="feat-name">Training Tools</div>
-        <div class="feat-desc">Metronome, speed trainer, consistency tracker, daily drills, transition trainer.</div>
+        <div class="feat-name">Siteswap Engine</div>
+        <div class="feat-desc">Type any siteswap — watch it juggle in real-time 3D. Orbit, zoom, and view from any angle including first-person.</div>
       </div>
       <div class="feat">
         <div class="feat-icon">🎳</div>
         <div class="feat-name">All Props</div>
-        <div class="feat-desc">Balls, clubs, rings, bounce juggling, and diabolo with accurate 3D physics.</div>
+        <div class="feat-desc">Balls, clubs, rings, bounce juggling, and diabolo with accurate physics and neon trail effects.</div>
       </div>
       <div class="feat">
         <div class="feat-icon">👥</div>
-        <div class="feat-name">Passing</div>
-        <div class="feat-desc">Two-person passing patterns and multi-juggler formations in full 3D.</div>
+        <div class="feat-name">Passing & Multi</div>
+        <div class="feat-desc">Two-person passing patterns and multi-juggler formations. Solo, duo, and group configurations.</div>
+      </div>
+    </div>
+
+    <div class="feat-section-label">Create & Perform</div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">✎</div>
+        <div class="feat-name">Choreo Studio</div>
+        <div class="feat-desc">Choreography editor — pose the juggler beat by beat, set body positions, and build full performance routines.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🎭</div>
+        <div class="feat-name">Routine Builder</div>
+        <div class="feat-desc">Sequence patterns and tricks into full routines with transitions and timing. Includes pre-built routines from legends.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔗</div>
+        <div class="feat-name">Share</div>
+        <div class="feat-desc">Shareable pattern URLs, screenshots, and video clip recording. Show your patterns to the world.</div>
+      </div>
+    </div>
+
+    <div class="feat-section-label">6 Skill Games</div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-name">Pattern Drop</div>
+        <div class="feat-desc">Tap the right hand at the right time. 100+ siteswap levels with increasing difficulty.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔍</div>
+        <div class="feat-name">Pattern Detective</div>
+        <div class="feat-desc">Watch a mystery pattern. Deduce which siteswap it is before time runs out.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🧩</div>
+        <div class="feat-name">Ladder Puzzle</div>
+        <div class="feat-desc">Fill in the missing throws on a ladder diagram. Visual siteswap puzzles across 3 difficulty tiers.</div>
+      </div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">🔁</div>
+        <div class="feat-name">Echo Cascade</div>
+        <div class="feat-desc">Watch the pattern, echo it back. How many rounds can you survive?</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-name">Flash Challenge</div>
+        <div class="feat-desc">Rapid-fire micro-goals with L/R hand catching. 32 levels across 4 tiers.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🎲</div>
+        <div class="feat-name">Catch 22</div>
+        <div class="feat-desc">Survival challenge — keep juggling as the difficulty ramps up.</div>
+      </div>
+    </div>
+
+    <div class="feat-section-label">Train & Track</div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">☀️</div>
+        <div class="feat-name">Daily Drill</div>
+        <div class="feat-desc">5 curated challenges targeting your weak areas. Complete one every day.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📓</div>
+        <div class="feat-name">Practice Journal</div>
+        <div class="feat-desc">Log sessions, track personal records, view progress charts, and build practice streaks.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⏱️</div>
+        <div class="feat-name">Training Suite</div>
+        <div class="feat-desc">Metronome, speed trainer, consistency tracker, numbers trainer, and mastery progression.</div>
+      </div>
+    </div>
+
+    <div class="feat-section-label">Learn</div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">🧮</div>
+        <div class="feat-name">Siteswap Primer</div>
+        <div class="feat-desc">Interactive guide to siteswap notation — from the basics to advanced theory.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔎</div>
+        <div class="feat-name">Siteswap Explorer</div>
+        <div class="feat-desc">Discover every valid siteswap pattern. Filters, similarity search, ground state detection, and trick names.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🎪</div>
+        <div class="feat-name">Trick Library</div>
+        <div class="feat-desc">Curated tricks organized by prop count. Transitions, learning paths, and step-through mode.</div>
       </div>
     </div>
   </div>
@@ -363,13 +420,13 @@ footer {
     <div class="section-title">Kinetara Studios</div>
     <div class="about-content">
       <div class="about-text">
-        <p>Kinetara Studios builds <em>free interactive apps</em> — simulators, skill games, and training tools that turn complex skills into something you can see, hear, and practice.</p>
-        <p>We start with juggling because it's where math meets motion. But our goal is bigger — we want to build the best skill-development tools on the planet.</p>
-        <p>Published under the <em>Jugglesmith</em> brand. Based in Colorado.</p>
+        <p>Kinetara Studios builds <em>interactive skill tools</em> — simulators, games, and training apps that turn complex physical skills into something you can visualize, practice, and master.</p>
+        <p>We started with juggling because it sits at the intersection of math, physics, and performance art. Siteswap notation gives us a precise language for patterns, and our 3D engine brings that language to life.</p>
+        <p>Based in Colorado. Published under the <em>Jugglesmith</em> brand.</p>
       </div>
       <div class="about-stats">
-        <div class="stat"><div class="stat-num">21K+</div><div class="stat-label">Lines of Code</div></div>
-        <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Games</div></div>
+        <div class="stat"><div class="stat-num">32K+</div><div class="stat-label">Lines of Code</div></div>
+        <div class="stat"><div class="stat-num">6</div><div class="stat-label">Skill Games</div></div>
         <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Levels</div></div>
         <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Patterns</div></div>
       </div>
@@ -382,7 +439,11 @@ footer {
     <div class="footer-brand">KINETARA STUDIOS</div>
     <div class="footer-links">
       <a href="mailto:kinetarastudios@gmail.com">Contact</a>
-      <a href="privacy.html">Privacy — Pattern Drop</a>
-      <a href="privacy-jugglecraft.html">Privacy — JuggleCraft 3D</a>
+      <a href="privacy-jugglecraft.html">Privacy Policy</a>
     </div>
-    <div class="footer-cop
+    <div class="footer-copy">&copy; 2026 Kinetara Studios. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
