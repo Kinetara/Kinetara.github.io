@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jc3d-v10.1.0';
+const CACHE_NAME = 'jc3d-v10.8.3';
 const ASSETS = [
   '/app/',
   '/app/index.html',
